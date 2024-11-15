@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Atividade de Paginação</title>
+
+</head>
+<body >   
+
+    <h1><span>Página {{ pagina }}</span></h1>
+<div >
+    <ul>
+        {% for item in itens %}
+            <li>Item {{ item }} <button class="action-btn">Ver detalhes</button></li>
+            <div  class="container">
+                Descrição do item {{ item }}<br><br>
+                <button class="fechar">Fechar</button>
+            </div>
+            <br>
+        {% endfor %}
+    </ul>
+</div>
+
+        {% if pagina > 1 %}
+            <a href="?pagina={{ pagina - 1 }}">Página Anterior</a>
+        {% endif %}
+
+        {% if pagina < total_paginas %}
+            <a href="?pagina={{ pagina + 1 }}">Próxima Página</a>
+        {% endif %}
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
